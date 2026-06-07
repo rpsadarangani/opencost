@@ -17,8 +17,8 @@ jobs:
       - name: Build binaries
         run: |
           mkdir -p bin
-          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=1.120.2-cur1 -X main.commit=${GITHUB_SHA::7}" -o bin/opencost-amd64 ./cmd/costmodel
-          CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags "-X main.version=1.120.2-cur1 -X main.commit=${GITHUB_SHA::7}" -o bin/opencost-arm64 ./cmd/costmodel
+          CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-X main.version=1.120.2-cur2 -X main.commit=${GITHUB_SHA::7}" -o bin/opencost-amd64 ./cmd/costmodel
+          CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags "-X main.version=1.120.2-cur2 -X main.commit=${GITHUB_SHA::7}" -o bin/opencost-arm64 ./cmd/costmodel
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
       - uses: docker/login-action@v3
@@ -33,5 +33,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/rpsadarangani/opencost:1.120.2-cur1
+            ghcr.io/rpsadarangani/opencost:1.120.2-cur2
             ghcr.io/rpsadarangani/opencost:latest
